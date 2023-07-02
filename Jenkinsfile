@@ -5,6 +5,7 @@ stages {
     stage('checkout') {
         steps {
             echo " Echo this is checkout stage"
+            git branch: 'main', url: 'https://github.com/Dev-april-2023/java-example.git'
              }
         }
 
