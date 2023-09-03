@@ -1,0 +1,10 @@
+webapp:
+   dockerImage: vishal1992/jenkin:helmNew
+   containerName: mychart
+   deploymentName: webapp-deployment
+
+   deploymentReplicas: 3
+
+services:
+   port: 80
+   nodeport: 31000

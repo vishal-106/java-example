@@ -1,20 +1,20 @@
 apiVersion: apps/v1
-kind: ReplicaSet
-metadata: 
-name: rs-nginx
-spec:
-replicas: 2
-selector:
-matchlabels:
-app: web
-template:
+kind: Deployment
 metadata:
-name: nginx
-labels:
-apps: web
+  name: {{ .values.webapp.deploymentName }}
 spec:
-containers:
-- name: container-nginx
-image: nginx
-ports:
-- containerport: 80
+  replicas: {{ .values.deploymentReplicas }}
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: {{ .values.webapp.containerName }}
+        image: {{ .values.webapp.dockerImage }}
+        ports:
+        - containerPort: {{ values.services.port }}

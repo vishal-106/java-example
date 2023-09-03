@@ -5,8 +5,8 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - targetPort: 8080
-    port: 8080
-    nodePort: 31000
+  - targetPort: {{ values.services.port }}
+    port: {{ values.services.port }}
+    nodePort: {{ .values.services.nodePort }}
   selector:
     apps: web
